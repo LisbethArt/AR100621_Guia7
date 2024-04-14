@@ -10,6 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Edit</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 
@@ -21,7 +22,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="idEstudiante" class="control-label"></label>
-                <input asp-for="idEstudiante" class="form-control" name="idEstudiante"/>
+                <input asp-for="idEstudiante" class="form-control" name="idEstudiante" disabled/>
                 <span asp-validation-for="idEstudiante" class="text-danger"></span>
             </div>
             <div class="form-group">
