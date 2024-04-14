@@ -15,6 +15,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\LisbethArt\Prácticas\Clase\LPP0G01\.NET\AR100621_Guia7\SitioWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/LisbethArt/Prácticas/Clase/LPP0G01/.NET/AR100621_Guia7/SitioWeb/Views/Estudiantes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LisbethArt/Prácticas/Clase/LPP0G01/.NET/AR100621_Guia7/SitioWeb/Views/Estudiantes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LisbethArt/Prácticas/Clase/LPP0G01/.NET/AR100621_Guia7/SitioWeb/Views/Estudiantes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LisbethArt/Prácticas/Clase/LPP0G01/.NET/AR100621_Guia7/SitioWeb/Views/Estudiantes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/LisbethArt/Prácticas/Clase/LPP0G01/.NET/AR100621_Guia7/SitioWeb/Views/Estudiantes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0dWRpYW50ZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

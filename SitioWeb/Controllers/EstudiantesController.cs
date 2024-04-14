@@ -1,26 +1,110 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SitioWeb.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace SitioWeb.Controllers
 {
     public class EstudiantesController : Controller
     {
+        private const string FilePath = "dataEstudiantes.txt";
+
+        public EstudiantesController()
+        {
+            if (!System.IO.File.Exists(FilePath)) // Verificar si el archivo existe, si no, crearlo y escribir los datos iniciales
+            {
+                var Estudiantes = RecuperaEstudiante();
+                EscribirDatosEnArchivo(Estudiantes);
+            }
+        }
+
         // GET: EstudiantesController
         public ActionResult Index()
         {
-            // return View();
-
-            var Estudiantes = from estud in RecuperaEstudiante()
-                              orderby estud.idEstudiante
-                              select estud;
+            var Estudiantes = LeerDatosDesdeArchivo();
             return View(Estudiantes);
         }
 
         // GET: EstudiantesController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int idEstudiante)
         {
-            return View();
+            var Estudiantes = LeerDatosDesdeArchivo();
+            var Estudiante = Estudiantes.FirstOrDefault(e => e.idEstudiante == idEstudiante);
+            return View(Estudiante);
+        }
+
+        // GET: EstudiantesController/Edit/5
+        public ActionResult Edit(int idEstudiante)
+        {
+            var Estudiantes = LeerDatosDesdeArchivo();
+            var Estudiante = Estudiantes.FirstOrDefault(e => e.idEstudiante == idEstudiante);
+            return View(Estudiante);
+        }
+
+        // POST: EstudiantesController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int idEstudiante, Estudiante editEstudiante)
+        {
+            try
+            {
+                var Estudiantes = LeerDatosDesdeArchivo();
+                var Estudiante = Estudiantes.FirstOrDefault(e => e.idEstudiante == idEstudiante);
+
+                if (Estudiante != null)
+                {
+                    Estudiante.Nombre = editEstudiante.Nombre;
+                    Estudiante.ApelPaterno = editEstudiante.ApelPaterno;
+                    Estudiante.ApelMaterno = editEstudiante.ApelMaterno;
+                    Estudiante.FechaInscrip = editEstudiante.FechaInscrip;
+                    Estudiante.Edad = editEstudiante.Edad;
+
+                    EscribirDatosEnArchivo(Estudiantes);
+                }
+
+                return RedirectToAction(nameof(Index)); // Redirige a Index después de editar
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: EstudiantesController/Delete/5
+        public ActionResult Delete(int idEstudiante)
+        {
+            var Estudiantes = LeerDatosDesdeArchivo();
+            var Estudiante = Estudiantes.FirstOrDefault(e => e.idEstudiante == idEstudiante);
+            return View(Estudiante);
+        }
+
+        // POST: EstudiantesController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int idEstudiante, Estudiante deleteEstudiante)
+        {
+            try
+            {
+                var Estudiantes = LeerDatosDesdeArchivo();
+                var Estudiante = Estudiantes.FirstOrDefault(e => e.idEstudiante == idEstudiante);
+
+                if (Estudiante != null)
+                {
+                    // Remover completamente al estudiante de la lista
+                    Estudiantes.Remove(Estudiante);
+
+                    // Reescribir todos los estudiantes restantes en el archivo, excepto el que se eliminó
+                    EscribirDatosEnArchivo(Estudiantes);
+                }
+
+                return RedirectToAction(nameof(Index)); // Redirige a Index después de eliminar
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: EstudiantesController/Create
@@ -32,10 +116,14 @@ namespace SitioWeb.Controllers
         // POST: EstudiantesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Estudiante estudiante)
         {
             try
             {
+                var Estudiantes = LeerDatosDesdeArchivo();
+                estudiante.idEstudiante = Estudiantes.Count + 1;
+                Estudiantes.Add(estudiante);
+                EscribirDatosEnArchivo(Estudiantes);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -44,50 +132,44 @@ namespace SitioWeb.Controllers
             }
         }
 
-        // GET: EstudiantesController/Edit/5
-        public ActionResult Edit(int id)
+        [NonAction]
+        public List<Estudiante> LeerDatosDesdeArchivo()
         {
-            return View();
+            var Estudiantes = new List<Estudiante>();
+            using (var reader = new StreamReader(FilePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var datos = line.Split(',');
+                    var estudiante = new Estudiante
+                    {
+                        idEstudiante = int.Parse(datos[0]),
+                        Nombre = datos[1],
+                        ApelPaterno = datos[2],
+                        ApelMaterno = datos[3],
+                        FechaInscrip = DateTime.Parse(datos[4]),
+                        Edad = int.Parse(datos[5])
+                    };
+                    Estudiantes.Add(estudiante);
+                }
+            }
+            return Estudiantes;
         }
 
-        // POST: EstudiantesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [NonAction]
+        public void EscribirDatosEnArchivo(List<Estudiante> estudiantes)
         {
-            try
+            using (var writer = new StreamWriter(FilePath))
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                foreach (var estudiante in estudiantes)
+                {
+                    writer.WriteLine($"{estudiante.idEstudiante},{estudiante.Nombre},{estudiante.ApelPaterno},{estudiante.ApelMaterno},{estudiante.FechaInscrip},{estudiante.Edad}");
+                }
             }
         }
 
-        // GET: EstudiantesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: EstudiantesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-    
-        [NonAction] // No permite peticiones desde el navegador, solo desde el controlador
-
+        [NonAction]
         public List<Estudiante> RecuperaEstudiante()
         {
             return new List<Estudiante>
@@ -98,7 +180,7 @@ namespace SitioWeb.Controllers
                     Nombre="Carlos",
                     ApelPaterno="Montoya",
                     ApelMaterno="Figueroa",
-                    FechaInscrip=DateTime.Parse(DateTime.Today.ToString()),
+                    FechaInscrip=DateTime.Today,
                     Edad = 20
                 },
                 new Estudiante
@@ -107,7 +189,7 @@ namespace SitioWeb.Controllers
                     Nombre="Lourdes",
                     ApelPaterno="Peña",
                     ApelMaterno="Ardón",
-                    FechaInscrip=DateTime.Parse(DateTime.Today.ToString()),
+                    FechaInscrip=DateTime.Today,
                     Edad = 18
                 },
             };
