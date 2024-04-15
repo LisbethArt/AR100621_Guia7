@@ -121,7 +121,6 @@ namespace SitioWeb.Controllers
             try
             {
                 var Estudiantes = LeerDatosDesdeArchivo();
-                estudiante.idEstudiante = Estudiantes.Count + 1;
                 Estudiantes.Add(estudiante);
                 EscribirDatosEnArchivo(Estudiantes);
                 return RedirectToAction(nameof(Index));

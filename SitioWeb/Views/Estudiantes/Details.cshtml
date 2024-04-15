@@ -9,17 +9,17 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <title>Detalles</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 
 <div>
-    <h4>Estudiante</h4>
+    <h4>Detalles del estudiante</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.idEstudiante)
+            Id del estudiante
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.idEstudiante)
@@ -31,19 +31,19 @@
             @Html.DisplayFor(model => model.Nombre)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ApelPaterno)
+            Apellido paterno
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ApelPaterno)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ApelMaterno)
+            Apellido materno
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ApelMaterno)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaInscrip)
+            Fecha de inscripción
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FechaInscrip)
@@ -57,8 +57,8 @@
     </dl>
 </div>
     <div>
-        @Html.ActionLink("Edit", "Edit", new { idEstudiante = Model.idEstudiante }) |
-        <a asp-action="Index">Back to List</a>
+        @Html.ActionLink("Editar", "Edit", new { idEstudiante = Model.idEstudiante }, new { @class = "btn btn-primary" }) |
+        <a asp-action="Index">Volver atrás</a>
     </div>
 </body>
 </html>

@@ -9550,11 +9550,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LisbethArt\\Prácticas\\Clase\\LPP0G01\\.NET\\AR100621_Guia7\\SitioWeb\\SitioWeb.csproj",
+      "projectUniqueName": "C:\\Proyectos\\.NET\\LPP0\\AR100621_Guia7\\SitioWeb\\SitioWeb.csproj",
       "projectName": "SitioWeb",
-      "projectPath": "C:\\Users\\LisbethArt\\Prácticas\\Clase\\LPP0G01\\.NET\\AR100621_Guia7\\SitioWeb\\SitioWeb.csproj",
+      "projectPath": "C:\\Proyectos\\.NET\\LPP0\\AR100621_Guia7\\SitioWeb\\SitioWeb.csproj",
       "packagesPath": "C:\\Users\\LisbethArt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LisbethArt\\Prácticas\\Clase\\LPP0G01\\.NET\\AR100621_Guia7\\SitioWeb\\obj\\",
+      "outputPath": "C:\\Proyectos\\.NET\\LPP0\\AR100621_Guia7\\SitioWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -9611,7 +9611,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.415\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

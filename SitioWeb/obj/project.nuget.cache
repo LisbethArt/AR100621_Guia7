@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1KuUWvDS8kvwJ7Cj/Iig6IkkWYGxSAFJfkI23jWOHCvdEptkdOTj5UoD9jQIu/pLMgoQIceRUHyuhsJ1GV0gVg==",
+  "dgSpecHash": "cY30hAerFH9s9P8MREHFVbBhw++9yVRHk57yzsELMoLv5hFwzMn1lHsH+kJHkZ6C+gZVLfZ+xIBLyvUZrNmVJw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\LisbethArt\\Prácticas\\Clase\\LPP0G01\\.NET\\AR100621_Guia7\\SitioWeb\\SitioWeb.csproj",
+  "projectFilePath": "C:\\Proyectos\\.NET\\LPP0\\AR100621_Guia7\\SitioWeb\\SitioWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LisbethArt\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\LisbethArt\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

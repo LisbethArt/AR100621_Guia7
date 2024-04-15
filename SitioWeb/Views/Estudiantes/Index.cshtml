@@ -8,30 +8,30 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Inicio</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Crear nuevo registro</a>
 </p>
 <table class="table">
     <thead class="thead-dark">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.idEstudiante)
+                Id del estudiante
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ApelPaterno)
+                Apellido paterno
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ApelMaterno)
+                Apellido materno
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaInscrip)
+                Fecha de inscripción
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Edad)
@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.Edad)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { item.idEstudiante }) |
-                @Html.ActionLink("Details", "Details", new { item.idEstudiante }) |
-                @Html.ActionLink("Delete", "Delete", new { item.idEstudiante })
+                @Html.ActionLink("Editar", "Edit", new { item.idEstudiante }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Detalles", "Details", new { item.idEstudiante }, new { @class = "btn btn-secondary" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { item.idEstudiante }, new { @class = "btn btn-danger" }) |
             </td>
         </tr>
 }
